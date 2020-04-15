@@ -12,7 +12,7 @@ class MovieList extends Component {
   render() {
     return (
       <UserContext.Consumer>
-        {(userContext) => (
+        {userContext => (
           <div>
             Movie List{" "}
             {userContext.currentUser ? userContext.currentUser.name : ""}{" "}
