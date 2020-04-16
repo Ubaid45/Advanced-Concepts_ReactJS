@@ -1,68 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# `Higher-Order Components`
 
-## Available Scripts
+### A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React’s compositional nature.
 
-In the project directory, you can run:
+Concretely, a higher-order component is a function that takes a component and returns a new component.
 
-### `npm start`
+```javascript
+const EnhancedComponent = higherOrderComponent(WrappedComponent);
+```
+Whereas a component transforms props into UI, a higher-order component transforms a component into another component.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+HOCs are common in third-party React libraries, such as Redux’s **[connect](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect)** and Relay’s **[createFragmentContainer](https://relay.dev/docs/en/fragment-container.html)**.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# `Hooks`
 
-### `npm test`
+### Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## State Hook
+```javascript
+import React, { useState } from 'react';
 
-### `npm run build`
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Here, **useState** is a Hook. We call it inside a function component to add some local state to it. React will preserve this state between re-renders. **useState** returns a pair: the current state value and a function that lets you update it. You can call this function from an event handler or somewhere else. It’s similar to **this.setState** in a class, except it doesn’t merge the old and new state together.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Effect Hook
+```javascript
+import React, { useState, useEffect } from 'react';
 
-### `npm run eject`
+function Example() {
+  const [count, setCount] = useState(0);
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+The Effect Hook, **useEffect**, adds the ability to perform side effects from a function component. It serves the same purpose as **componentDidMount**, **componentDidUpdate**, and **componentWillUnmount** in React classes, but unified into a single API. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Custom Hooks
+Sometimes, we want to reuse some stateful logic between components. Traditionally, there were two popular solutions to this problem: **higher-order components** and **render props**. Custom Hooks let us do this, but without adding more components to your tree.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Custom Hooks are more of a convention than a feature. If a function’s name starts with **use** and it calls other Hooks, we say it is a custom Hook. The **useSomething** naming convention is how linter plugin is able to find bugs in the code using Hooks.
 
-## Learn More
+We can write custom Hooks that cover a wide range of use cases like form handling, animation, declarative subscriptions, timers, and probably many more that haven’t considered yet.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# `Context`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Context provides a way to pass data through the component tree without having to pass props down manually at every level.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+In a typical React application, data is passed top-down (parent to child) via props, but this can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
