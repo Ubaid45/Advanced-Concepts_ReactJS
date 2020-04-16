@@ -1,10 +1,10 @@
-In this project, I practiced some advanced concepts in react JS, which are following:
-- Higher-Order Components
-- Hooks
-  - useState Hook
-  - useEffect Hook
+In this project, I practiced some advanced concepts in React JS, which are following:
+- **Higher-Order Components**
+- **Hooks**
+  - State Hook
+  - Effect Hook
   - Custom Hooks
-- Context
+- **Context**
 
 Here is the brief summary of these advanced concepts.
 
