@@ -5,6 +5,7 @@ In this project, I practiced some advanced concepts in react JS, which are follo
   - useEffect Hook
   - Custom Hooks
 - Context
+
 Here is the brief summary of these advanced concepts.
 
 # Higher-Order Components
