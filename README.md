@@ -23,7 +23,7 @@ HOCs are common in third-party React libraries, such as Redux’s **[connect](ht
 
 # Hooks
 
-### Hooks are a new addition in React 16.8. They let us use state and other React features without writing a class. 
+### Hooks let us use state and other React features without writing a class. 
 
 We can categorized them into following:
 - State Hook
