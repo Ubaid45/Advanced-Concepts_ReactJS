@@ -1,4 +1,13 @@
-# `Higher-Order Components`
+In this project, I practiced some advanced concepts in react JS, which are following:
+- Higher-Order Components
+- Hooks
+  - useState Hook
+  - useEffect Hook
+  - Custom Hooks
+- Context
+Here is the brief summary of these advanced concepts.
+
+# Higher-Order Components
 
 ### A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React’s compositional nature.
 
@@ -11,7 +20,7 @@ Whereas a component transforms props into UI, a higher-order component transform
 
 HOCs are common in third-party React libraries, such as Redux’s **[connect](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect)** and Relay’s **[createFragmentContainer](https://relay.dev/docs/en/fragment-container.html)**.
 
-# `Hooks`
+# Hooks
 
 ### Hooks are a new addition in React 16.8. They let us use state and other React features without writing a class.
 
@@ -68,7 +77,7 @@ Custom Hooks are more of a convention than a feature. If a function’s name sta
 
 We can write custom Hooks that cover a wide range of use cases like form handling, animation, declarative subscriptions, timers, and probably many more that haven’t considered yet.
 
-# `Context`
+# Context
 
 ### Context provides a way to pass data through the component tree without having to pass props down manually at every level.
 
