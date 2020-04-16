@@ -13,7 +13,7 @@ HOCs are common in third-party React libraries, such as Redux’s **[connect](ht
 
 # `Hooks`
 
-### Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
+### Hooks are a new addition in React 16.8. They let us use state and other React features without writing a class.
 
 ## State Hook
 ```javascript
@@ -34,7 +34,7 @@ function Example() {
 }
 ```
 
-Here, **useState** is a Hook. We call it inside a function component to add some local state to it. React will preserve this state between re-renders. **useState** returns a pair: the current state value and a function that lets you update it. You can call this function from an event handler or somewhere else. It’s similar to **this.setState** in a class, except it doesn’t merge the old and new state together.
+Here, **useState** is a Hook. We call it inside a function component to add some local state to it. React will preserve this state between re-renders. **useState** returns a pair: the current state value and a function that lets us update it. We can call this function from an event handler or somewhere else. It’s similar to **this.setState** in a class, except it doesn’t merge the old and new state together.
 
 ## Effect Hook
 ```javascript
@@ -62,7 +62,7 @@ function Example() {
 The Effect Hook, **useEffect**, adds the ability to perform side effects from a function component. It serves the same purpose as **componentDidMount**, **componentDidUpdate**, and **componentWillUnmount** in React classes, but unified into a single API. 
 
 ## Custom Hooks
-Sometimes, we want to reuse some stateful logic between components. Traditionally, there were two popular solutions to this problem: **higher-order components** and **render props**. Custom Hooks let us do this, but without adding more components to your tree.
+Sometimes, we want to reuse some stateful logic between components. Traditionally, there were two popular solutions to this problem: **higher-order components** and **render props**. Custom Hooks let us do this, but without adding more components to our tree.
 
 Custom Hooks are more of a convention than a feature. If a function’s name starts with **use** and it calls other Hooks, we say it is a custom Hook. The **useSomething** naming convention is how linter plugin is able to find bugs in the code using Hooks.
 
